@@ -1,0 +1,349 @@
+@property --rotate {
+  syntax: "<angle>";
+  initial-value: 132deg;
+  inherits: false;
+}
+
+.active2{
+  background-color: #4e00c2;
+  color: #ffff;
+  border-radius: 0.2rem;
+}
+
+:root{
+  --card-height: 25rem;
+  --card-width: calc(var(--card-height) / 1.5);
+  font-family: 'Merriweather Sans', sans-serif; 
+}
+
+a{
+  color: #212534;
+  text-decoration: none;
+  font-family: sans-serif;
+  font-weight: bold;
+  margin-top: 2rem;
+}
+
+.navbar-nav{
+  margin-bottom: 2rem;
+}
+
+.banner{
+  height: 22vh;
+  padding-top: 1.5rem;
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.card img{
+  object-fit: cover;
+  height: 50%;
+}
+
+nav{
+  height: 10vh;
+  background-color: rgba(0, 0, 0, 0.821);
+}
+
+nav a{
+  margin-left: 2rem;
+  font-family: 'Merriweather Sans', sans-serif; 
+}
+
+.bg-negro{
+  background-color: black !important;
+}
+
+footer{
+  bottom: 0;
+  width: fit-content;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+} 
+
+.none{
+  display: none;
+}
+
+.error{
+  color: #fdfdfd;
+  font-weight: 400;
+}
+
+.fb {
+  font-size: 2rem;
+  margin: 1rem;
+}
+
+body {
+  min-height: 100vh;
+  background: #000000;
+  display: flex;
+  height: 78vh;
+  align-items: center;
+  flex-direction: column;
+  padding-bottom: 2rem;
+  box-sizing: border-box;
+}
+
+.btn-cande{
+  border: 2px solid #3c67e3 43%;
+  color: #5ddcff;
+  width: max-content;
+}
+
+.btn-cande:checked{
+  background-color: #4e00c2 !important;
+  color: #3c67e3 !important;
+  
+}
+
+.btn-cande:hover{
+  background-color: #4e00c2;
+  color: #ffff;
+}
+
+.card {
+  background: #191c29;
+  width: var(--card-width);
+  height: var(--card-height);
+  padding: 3px;
+  position: relative;
+  border-radius: 6px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  display: flex;
+  font-size: 1rem;
+  color: rgba(142, 142, 142, 0.624);
+  cursor: pointer;
+}
+
+.card:hover {
+  color: #ffff;
+  transition: color 1s;
+}
+
+.card:hover:before, .card:hover:after {
+  animation: none;
+  opacity: 0;
+}
+
+.card::before {
+  content: "";
+  width: 104%;
+  height: 102%;
+  border-radius: 8px;
+  background-image: linear-gradient(
+    var(--rotate)
+    , #5ddcff, #3c67e3 43%, #4e00c2);
+    position: absolute;
+    z-index: -1;
+    top: -1%;
+    left: -2%;
+    animation: spin 2.5s linear infinite;
+}
+
+.card::after {
+  position: absolute;
+  content: "";
+  top: calc(var(--card-height) / 6);
+  left: 0;
+  right: 0;
+  z-index: -1;
+  height: 100%;
+  width: 100%;
+  margin: 0 auto;
+  transform: scale(0.8);
+  filter: blur(calc(var(--card-height) / 6));
+  background-image: linear-gradient(
+    var(--rotate)
+    ,  #5ddcff, #3c67e3 43%, #4e00c2);
+    opacity: 0.6;
+  transition: opacity .5s;
+  animation: spin 2.5s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    --rotate: 0deg;
+  }
+  100% {
+    --rotate: 360deg;
+  }
+}
+
+/*la lista checkbox*/
+.todo-list {
+  background: rgb(0, 0, 0);
+  font-size: 20px;
+  max-width: 15em;
+  margin: auto;
+  padding: 0.5em 1em;
+  box-shadow: 0 5px 30px rgba(0, 0, 0, 0.2);
+}
+.todo {
+  display: block;
+  position: relative;
+  padding: 1em 1em 1em 16%;
+  margin: 0 auto;
+  cursor: pointer;
+  border-bottom: solid 1px #ddd !important;
+}
+.todo:last-child {
+  border-bottom: none;
+}
+.todo__state {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+}
+.todo__text {
+  color: white;
+  transition: all 0.4s linear 0.4s;
+}
+.todo__icon {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  margin: auto;
+  fill: none;
+  stroke: #4e00c2;
+  stroke-width: 2;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+.todo__line,
+.todo__box,
+.todo__check {
+  transition: stroke-dashoffset 0.8s cubic-bezier(0.9, 0, 0.5, 1);
+}
+.todo__circle {
+  stroke: #f6f6f6;
+  stroke-dasharray: 1 6;
+  stroke-width: 0;
+  transform-origin: 13.5px 12.5px;
+  transform: scale(0.4) rotate(0deg);
+  -webkit-animation: none 0.8s linear;
+          animation: none 0.8s linear;
+}
+@-webkit-keyframes explode {
+  30% {
+    stroke-width: 3;
+    stroke-opacity: 1;
+    transform: scale(0.8) rotate(40deg);
+  }
+  100% {
+    stroke-width: 0;
+    stroke-opacity: 0;
+    transform: scale(1.1) rotate(60deg);
+  }
+}
+@keyframes explode {
+  30% {
+    stroke-width: 3;
+    stroke-opacity: 1;
+    transform: scale(0.8) rotate(40deg);
+  }
+  100% {
+    stroke-width: 0;
+    stroke-opacity: 0;
+    transform: scale(1.1) rotate(60deg);
+  }
+}
+.todo__box {
+  stroke-dasharray: 56.1053, 56.1053;
+  stroke-dashoffset: 0;
+  transition-delay: 0.16s;
+}
+.todo-list{
+  width: 15rem;
+}
+
+.todo__check {
+  stroke: #27FDC7;
+  stroke-dasharray: 9.8995, 9.8995;
+  stroke-dashoffset: 9.8995;
+  transition-duration: 0.32s;
+}
+.todo__line {
+  stroke-dasharray: 168, 1684;
+  stroke-dashoffset: 168;
+}
+.todo__circle {
+  -webkit-animation-delay: 0.56s;
+          animation-delay: 0.56s;
+  -webkit-animation-duration: 0.56s;
+          animation-duration: 0.56s;
+}
+.todo__state:checked ~ .todo__text {
+  transition-delay: 0s;
+  color: #2b9cd5;
+
+}
+.todo__state:checked ~ .todo__icon .todo__box {
+  stroke-dashoffset: 56.1053;
+  transition-delay: 0s;
+}
+.todo__state:checked ~ .todo__icon .todo__line {
+  stroke-dashoffset: -8;
+}
+.todo__state:checked ~ .todo__icon .todo__check {
+  stroke-dashoffset: 0;
+  transition-delay: 0.48s;
+}
+.todo__state:checked ~ .todo__icon .todo__circle {
+  -webkit-animation-name: explode;
+          animation-name: explode;
+}
+
+@media (max-width:768px){
+  main{
+    display: flex;
+    align-items: center;
+  }
+}
+
+.clasebanner {
+	text-transform: uppercase;
+	letter-spacing: .5em;
+	display: inline-block;
+	border: 4px double rgba(255, 255, 255, 0.25);
+	border-width: 4px 0;
+	padding: 1.5em 0em;
+	position: absolute;
+	top: 18%;
+	left: 50%;
+	width: 40em;
+	margin: 0 0 0 -20em;
+}
+
+.spanbanner {
+  font: 700 4em/1 "Oswald", sans-serif;
+  letter-spacing: 0;
+  padding: .25em 0 .325em;
+	display: block;
+	margin: 0 auto;
+  text-shadow: 0 0 80px rgba(255, 255, 255, 0.5);
+
+/* Clip Background Image */
+	 /*  background: url(https://fondosmil.com/fondo/23477.jpg) repeat-y; */
+	  -webkit-background-clip: text;
+	  background-clip: text;
+/* Animate Background Image */
+	  -webkit-animation: aitf 8s linear infinite;
+/* Activate hardware acceleration for smoother animations */
+	  -webkit-transform: translate3d(0,0,0);
+	  -webkit-backface-visibility: hidden;
+  }
+/* Animate Background Image */
+@-webkit-keyframes aitf {
+	0% { background-position: 0% 50%; }
+	100% { background-position: 100% 50%; 
+}
+}

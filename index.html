@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amazing Events</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather+Sans&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="./assets/style/style.css">   
+    <link rel="shortcut icon" href="./assets/img/favicon.png" type="image/x-icon">
+    
+</head>
+
+<body>
+      <h1 class="none">Amazing Events</h1>
+      <nav class="navbar navcandy navbar-expand-lg w-100 p-0 ps-5 pe-5 navbar-dark bg-negro">
+        <div class="container-fluid">
+          <img src="./assets/img/logofinal.svg" alt="" width="175" height="60" />
+          <button class="navbar-toggler text-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav d-flex bg-negro justify-content-lg-end w-100">
+              <li class="nav-item">
+                <a class="text-white nav-link active2" aria-current="page" href="#">HOME</a>
+              </li>
+              <li class="nav-item">
+                <a class="text-white nav-link" href="./upcomingevents.html">UPCOMING EVENTS</a>
+              </li>
+              <li class="nav-item">
+                <a class="text-white nav-link" href="./pastevents.html">PAST EVENTS</a>
+              </li>
+              <li class="nav-item"> 
+                <a class="text-white nav-link" href="./contact.html">CONTACT</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+      <p class="pt-5 mt-3"></p>
+    <main class="container-fluid" id="app">
+      <div class="d-flex flex-column flex-lg-row w-100">
+        <svg viewBox="0 0 0 0" style="position: absolute; z-index: -1; opacity: 0;">
+          <defs>
+            <linearGradient id="boxGradient" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="25" y2="25">
+              <stop offset="0%"   stop-color="#4e00c2"/>
+              <stop offset="100%" stop-color="#4e00c2"/>
+            </linearGradient>
+            <linearGradient id="lineGradient">
+              <stop offset="0%"    stop-color="#4e00c2"/>
+              <stop offset="100%"  stop-color="#4e00c2"/>
+            </linearGradient>
+            <path id="todo__line" stroke="url(#lineGradient)" d="M21 12.3h168v0.1z"></path>
+            <path id="todo__box" stroke="url(#boxGradient)" d="M21 12.7v5c0 1.3-1 2.3-2.3 2.3H8.3C7 20 6 19 6 17.7V7.3C6 6 7 5 8.3 5h10.4C20 5 21 6 21 7.3v5.4"></path>
+            <path id="todo__check" stroke="url(#boxGradient)" d="M10 13l2 2 5-5"></path>
+            <circle id="todo__circle" cx="13.5" cy="12.5" r="10"></circle>
+          </defs>
+        </svg> 
+
+        <div class="col col-lg-2">
+          <div class="w-100 d-flex justify-content-center">
+            <input class="form-control me-2 w-75" type="search" v-model="inputSearch" placeholder="Search" aria-label="Search" id="barraBusqueda"/>
+          </div>
+          <div v-for="check in categories" class="todo-list" id="cajaCheck">
+            <label class="todo">
+            <input v-model="checkedCategories" class="todo__state" :value="check" type="checkbox" :id="check" />
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 200 25" class="todo__icon">
+              <use xlink:href="#todo__line" class="todo__line"></use>
+              <use xlink:href="#todo__box" class="todo__box"></use>
+              <use xlink:href="#todo__check" class="todo__check"></use>
+              <use xlink:href="#todo__circle" class="todo__circle"></use>
+            </svg>
+            <div class="todo__text">{{check}}</div>
+            </label>
+          </div>
+        </div>
+        {{doubleFilter}}
+        <div id="miSeccion" class="d-flex flex-wrap justify-content-center gap-5 p-4">
+          <div class="card p-0 d-flex flex-column justify-content-between" v-for="evento in eventos" v-show="eventos.length > 0">
+            <img :src="evento.image" class="card-img-top" :alt="evento.name">
+            <h5 class="mt-2">{{evento.name}}</h5>
+            <p class="px-3" >{{evento.description.slice(0,70)}}...</p>
+            <a class="btn btn-cande mt-0 mb-3">See more</a>
+          </div>
+        </div>
+        <h5 class="error" v-show="eventos.length == 0">Error. No results found, try a different word, example 'family'</h5>
+      </div>
+    </main>
+      
+  <footer class="d-flex flex-column w-100 p-2 flex-sm-row justify-content-evenly text-white align-items-center">
+  <div>
+    <i class="fb bi bi-facebook"></i>
+    <i class="fb bi bi-instagram"></i>
+    <i class="fb bi bi-whatsapp"></i>
+  </div>
+  <h6>Amazing Events&reg;</h6>
+  <h5>Chalub Candelaria</h5>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/vue@3"></script>
+  <script src="./assets/js/mainvue.js"></script>
+</body>
+</html>

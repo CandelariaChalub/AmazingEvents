@@ -1,0 +1,155 @@
+@property --rotate {
+    syntax: "<angle>";
+    initial-value: 132deg;
+    inherits: false;
+}
+
+:root{
+    --card-height: 23rem;
+    --card-width: 50rem;
+    font-family: 'Merriweather Sans', sans-serif; 
+}
+
+.espacio{
+    margin-top: 12rem;
+}
+
+.acomodarimg{
+    width: 24rem;
+    height: 365.9px;
+    object-fit: cover;
+    padding: 0;
+    border-radius: 3px;
+    
+}
+
+.chevronCandy{
+    color: #5ddcff;
+    z-index: 0;
+}
+
+*{
+    margin: 0;
+    padding: 0; 
+    box-sizing: border-box;
+}
+nav{
+    height: 12vh;
+    background-color: rgba(0, 0, 0, 0.821);
+}
+
+nav a{
+    margin-left: 2rem;
+    font-family: 'Merriweather Sans', sans-serif; 
+}
+
+h1{
+    display: none;
+}
+
+h2{
+    font-family: 'Merriweather Sans', sans-serif;
+}
+
+
+.none{
+    display: none;
+}
+
+.fb {
+    font-size: 2rem;
+    margin: 1rem;
+}
+
+.btn-cande{
+    border: 2px solid #3c67e3 43%;
+    color: #5ddcff;
+    width: max-content;
+}
+
+.btn-cande:checked{
+    background-color: #5ddcff !important;
+    color: #3c67e3 !important;
+    
+}
+
+.btn-cande:hover{
+    background-color: #4e00c2;
+    color: #ffff;
+}
+
+footer{
+    position: absolute;
+    bottom: 0;
+    width: 100vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+body {
+    background: #000000;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding-bottom: 2rem;
+    box-sizing: border-box;
+}
+
+nav a{
+    text-decoration: none;
+    font-family: 'Merriweather Sans', sans-serif;
+    width: max-content;
+    margin-left: 1rem;
+}
+
+.bg-negro{
+    background-color: black;
+}
+
+.card {
+    background: #191c29;
+    width: var(--card-width);
+    height: var(--card-height);
+    padding: 3px;
+    position: relative;
+    border-radius: 6px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    display: flex;
+    font-size: 1rem;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+}
+
+.card:hover {
+    color: #ffff;
+    transition: color 1s;
+}
+
+
+
+.card::before {
+    content: "";
+    width: 102%;
+    height: 103%;
+    border-radius: 8px;
+    background-image: linear-gradient(
+    var(--rotate)
+    , #5ddcff, #3c67e3 43%, #4e00c2);
+    position: absolute;
+    z-index: -1;
+    top: -1.5%;
+    left: -1%;
+    animation: spin 2.5s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+    --rotate: 0deg;
+    }
+    100% {
+    --rotate: 360deg;
+    }
+}
