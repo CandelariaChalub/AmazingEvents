@@ -23,7 +23,7 @@ const app  = Vue.createApp({
         }
     }, 
     created(){
-        fetch("https://amazing-events.herokuapp.com/api/events")
+        fetch("https://mindhub-xj03.onrender.com/api/amazing")
         .then(respuesta => respuesta.json()) 
         .then(dataJson => {
 
